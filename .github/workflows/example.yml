@@ -1,26 +1,10 @@
-name: Example Workflow
-
+name: GitHub Context Example
 on: [push]
-
 jobs:
   example-job:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Run a script
-        run: |
-          echo '::group::My Group Title'
-          echo 'Some log messages inside the group'
-          echo '::endgroup::'
-
-          echo "::warning::This is a warning message"
-
-          echo "ACTION_PATH=$GITHUB_ACTION_PATH" >> $GITHUB_ENV
-
-          if [ "$SOME_CONDITION" = "false" ]; then
-            echo "::error::Something went wrong"
-            exit 1
-          fi
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
