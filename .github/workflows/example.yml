@@ -1,10 +1,29 @@
-name: GitHub Context Example
+name: Demo Environment Variables
+
 on: [push]
+
 jobs:
-  example-job:
+  demo-env-vars:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set a custom environment variable
+        run: echo "MY_CUSTOM_VAR=custom_value" >> $GITHUB_ENV
+
+      - name: Use the custom environment variable
+        run: echo "The value of MY_CUSTOM_VAR is: $MY_CUSTOM_VAR"
+
+      - name: Attempt to override GITHUB_REF
+        run: echo "GITHUB_REF=refs/heads/main" >> $GITHUB_ENV
+
+      - name: Check the value of GITHUB_REF (should not be overridden)
+        run: echo "The value of GITHUB_REF is: $GITHUB_REF"
+
+      - name: Attempt to override RUNNER_OS
+        run: echo "RUNNER_OS=Windows" >> $GITHUB_ENV
+
+      - name: Check the value of RUNNER_OS (should not be overridden)
+        run: echo "The value of RUNNER_OS is: $RUNNER_OS"
