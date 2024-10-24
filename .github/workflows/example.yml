@@ -17,16 +17,4 @@ jobs:
       - name: Use the custom environment variable
         run: echo "The value of MY_CUSTOM_VAR is:${{env.MY_CUSTOM_VAR}}"
 
-      - name: Attempt to override GITHUB_REF (should not be overridden)
-        run: |
-          echo "GITHUB_REF=refs/heads/main" >> $GITHUB_ENV
-          echo "Attempting to override GITHUB_REF. This will not have any effect."
-
-      - name: Check the value of GITHUB_REF (should not be overridden)
-        run: echo "The value of GITHUB_REF is:${{env.GITHUB_REF}}"
-
-
-
-      - name: Check the value of RUNNER_OS (should not be overridden)
-        run: echo "The value of RUNNER_OS is:${{env.RUNNER_OS"}}
 
