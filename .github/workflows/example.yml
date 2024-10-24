@@ -15,7 +15,7 @@ jobs:
         run: echo "MY_CUSTOM_VAR=custom_value" >> $GITHUB_ENV
 
       - name: Use the custom environment variable
-        run: echo "The value of MY_CUSTOM_VAR is: $MY_CUSTOM_VAR"
+        run: echo "The value of MY_CUSTOM_VAR is:${{env.MY_CUSTOM_VAR}}"
 
       - name: Attempt to override GITHUB_REF (should not be overridden)
         run: |
