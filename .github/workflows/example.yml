@@ -23,7 +23,7 @@ jobs:
           echo "Attempting to override GITHUB_REF. This will not have any effect."
 
       - name: Check the value of GITHUB_REF (should not be overridden)
-        run: echo "The value of GITHUB_REF is: $GITHUB_REF"
+        run: echo "The value of GITHUB_REF is:${{env.GITHUB_REF}}"
 
       - name: Attempt to override RUNNER_OS (should not be overridden)
         run: |
