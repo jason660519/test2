@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   demo-env-vars:
-    runs-on: ubuntu-latest
+    runs-on: runs-on: self-hosted
 
     steps:
       - name: Checkout repository
