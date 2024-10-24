@@ -5,6 +5,7 @@ on: [push]
 jobs:
   demo-env-vars:
     runs-on: runs-on:self-hosted
+    label:DESKTOP-KIC9ED8
     
 
     steps:
