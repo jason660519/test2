@@ -1,4 +1,4 @@
-name: Demo Environment Variables
+name: Demo_Environment_Variables_111
 
 on:
   push:
@@ -7,16 +7,16 @@ jobs:
   demo-env-vars:
     runs-on: self-hosted
       labels:DESKTOP-KIC9ED8
+    
+    steps:
+      name:Checkout repository
+      uses:actions/checkout@v2
 
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v2
+      name:Set a custom environment variable
+      run:echo "MY_CUSTOM_VAR=custom_value" >> $GITHUB_ENV
 
-  - name: Set a custom environment variable
-    run: echo "MY_CUSTOM_VAR=custom_value" >> $GITHUB_ENV
-
-  - name: Use the custom environment variable
-    run: echo "The value of MY_CUSTOM_VAR is:${{ env.MY_CUSTOM_VAR }}"
+      name:Use the custom environment variable
+      run:echo "The value of MY_CUSTOM_VAR is:${{ env.MY_CUSTOM_VAR }}"
 
 
 
