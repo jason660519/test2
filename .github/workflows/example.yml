@@ -31,5 +31,5 @@ jobs:
           echo "Attempting to override RUNNER_OS. This will not have any effect."
 
       - name: Check the value of RUNNER_OS (should not be overridden)
-        run: echo "The value of RUNNER_OS is: $RUNNER_OS"
+        run: echo "The value of RUNNER_OS is:${{env.RUNNER_OS"}}
 
