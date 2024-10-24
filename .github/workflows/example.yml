@@ -4,9 +4,9 @@ on: [push]
 
 jobs:
   demo-env-vars:
-    runs-on: runs-on:self-hosted
-    label:DESKTOP-KIC9ED8
-    
+    runs-on: self-hosted
+    runs-on: 
+      labels: DESKTOP-KIC9ED8    # 修正後的 label 語法
 
     steps:
       - name: Checkout repository
@@ -17,5 +17,6 @@ jobs:
 
       - name: Use the custom environment variable
         run: echo "The value of MY_CUSTOM_VAR is:${{env.MY_CUSTOM_VAR}}"
+
 
 
